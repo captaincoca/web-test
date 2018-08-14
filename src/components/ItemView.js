@@ -9,6 +9,7 @@ class ItemView extends Component {
         let id = parseInt(props.match.params.id);
         this.state = {
             ...props,
+            id: id,
             item: [],
         };
 
@@ -25,7 +26,7 @@ class ItemView extends Component {
     render() {
         return (
             <div>
-                Hello
+                Item Id:{this.state.id}
             </div>
         );
     }
