@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import {hot} from 'react-hot-loader';
+// redux imports
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as itemActions from '../actions/itemActions';
 
 class ItemView extends Component {
 
@@ -8,9 +12,7 @@ class ItemView extends Component {
         // set Id here
         let id = parseInt(props.match.params.id);
         this.state = {
-            ...props,
-            id: id,
-            item: [],
+            ...props
         };
 
         // load item here
@@ -19,6 +21,8 @@ class ItemView extends Component {
 
     reloadItem(id) {
         var i = 0;
+        // call redux action will change the id
+        this.props.itemActions.fetchItem();
       // after async load 
       //this.setState({item:o});
     }
@@ -26,10 +30,22 @@ class ItemView extends Component {
     render() {
         return (
             <div>
-                Item Id:{this.state.id}
+                Item Id:{this.props.item.id}
             </div>
         );
     }
 }
 
-export default hot ? hot(module)(ItemView) : ItemView;
+function mapStateToProps(state) {
+    return {
+      item: state.item
+    };
+  }
+  
+  function mapDispatchToProps(dispatch) {
+    return {
+      itemActions: bindActionCreators(itemActions, dispatch)
+    };
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(hot ? hot(module)(ItemView) : ItemView);
