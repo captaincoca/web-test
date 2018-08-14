@@ -30,6 +30,10 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     publicPath: '/',
+    historyApiFallback: {
+      disableDotRule:true
+      //htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
+    },
     hot: true,
   },
   plugins: [
