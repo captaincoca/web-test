@@ -10,7 +10,7 @@ export function fetchItem() {
     const getItemAsync = () => {
         const newItem = () => {
             return {
-                id:77, 
+                id:Math.random(), 
                 name: 'Joe'
             };
         }

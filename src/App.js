@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import About from './components/About';
 import ItemView from './components/ItemView';
+import Aside from './components/Aside';
 import NotFound from './components/NotFound';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import {hot} from 'react-hot-loader';
@@ -28,6 +29,9 @@ export class App extends Component {
                             <Route path="*" component={NotFound} />
                         </Switch>
                         </main>
+                        <aside>
+                            <Aside />
+                        </aside>
                     </div>
                 </BrowserRouter>
             </Provider>
